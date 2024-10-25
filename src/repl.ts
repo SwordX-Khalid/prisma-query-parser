@@ -18,8 +18,7 @@ const commands = await yargs(hideBin(process.argv))
           describe:
             "Specify which query parsing engine to use, interpreter provides more detailed errors, while regex is a bit more 'static' and due to that, offers slightly better performance.",
           choices: ["interpreter", "regex"],
-          default: "interpreter",
-          string: true
+          default: "interpreter"
         })
         .option("indexedColumns", {
           array: true,
@@ -35,6 +34,12 @@ const database = new Database({
   indexedColumns: (commands.indexedColumns as string[]) ?? [],
   _debugMode: true
 });
+
+console.log({
+  commands
+});
+
+console.log(chalk.dim(`Using "${commands.queryEngine}" query engine`));
 
 if (commands.csvFile) {
   await database.loadCSVFile(commands.csvFile as string);
