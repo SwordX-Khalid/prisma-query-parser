@@ -18,7 +18,7 @@ There are also two query engines, one is built using Regex mostly which is mainl
 
 In order to interact with the database, there are two methods of usage, you could either import it directly (via `src/index.ts`) and use it in another project of yours by initializing the Database class, or you could also start a repl environment where you can load a CSV file and run multiple queries on it.
 
-Here's a sample command you can run at the root of the project to initialize the repl environment:
+Here's a sample command you can run at the root of the project to install all the dependencies and initialize the repl environment:
 
 ```sh
 npm i && npm start load ./tests/_samples/fake_users_sample.csv -- --queryEngine interpreter
