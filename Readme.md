@@ -21,7 +21,7 @@ In order to interact with the database, there are two methods of usage, you coul
 Here's a sample command you can run at the root of the project to initialize the repl environment:
 
 ```sh
-npm i && npm start load ./tests/_samples/fake_users_sample.csv --interpreterEngine interpreter
+npm i && npm start load ./tests/_samples/fake_users_sample.csv --queryEngine interpreter
 ```
 
 You can also type `npm start load` to have a look over all of the supported options and commands you could use through bash.
