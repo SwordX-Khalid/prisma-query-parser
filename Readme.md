@@ -28,12 +28,12 @@ You can also type `npm start load` to have a look over all of the supported opti
 
 ## Questions
 
-**What were some of the tradeoffs you made when building this and why were these acceptable tradeoffs?**
+### What were some of the tradeoffs you made when building this and why were these acceptable tradeoffs?
 
 - The biggest tradeoff I had to make is while working on the binary indexer, I intentionally went for a while loop which probably isn't as readable as say, filtering using a method like `.filter`, but that helped bring down the complexity level for the loop to O(log n), which I believe is definitely worth it especially in large dataset use cases
 - Another tradeoff is with the QueryResult interface, I made the `filterCondition` property an object instead of an array just so it's generally simpler to interact with and faster technically speaking, especially given the assignment's expected result which is to have a query parser that only accepts one filter condition.
 
-**Given more time, what improvements or optimizations would you want to add? When would you add them?**
+### Given more time, what improvements or optimizations would you want to add? When would you add them?
 
 - Add more comparison operators (such as !=) - High priority
 - Add support for compound filters (&& and ||) - High priority
@@ -44,14 +44,15 @@ You can also type `npm start load` to have a look over all of the supported opti
 - Add query caching so complex queries shouldn't be re-run needlessly - Low priority
 - Implement AST for the interpreter query engine - Low priority
 
-**What changes are needed to accommodate changes to support other data types, multiple filters, or ordering of results?**
+### What changes are needed to accommodate changes to support other data types, multiple filters, or ordering of results?
 
 - For multiple filters support, what I would do is update the interpreter query engine to split filter queries by "AND" and "OR" and also update the QueryResult interface to also support storing an array of filterConditions so the database engine can understand what fields it should filter by and at which order
 
-**What changes are needed to process extremely large datasets**
+### What changes are needed to process extremely large datasets
 
 - The foundation for supporting large datasets is partially there with the support of indexing that's currently in-place, what I would do is probably add more indexing engines that the support other use cases and allow users to freely pick which engine they'd like to use for what column.
 - Another change I'd do is to update the datasets array in each of the indexers to reference dataset items by their index only rather than by copying the whole object over, just to improve the efficiency at which we're storing the data in-memory
 
-**What do you still need to do to make this code production ready?**
+### What do you still need to do to make this code production ready?
+
 I'd probably need to add more test cases than the ones I have currently and also optimize the way datasets are being handled in indexing engines just so the engine is more resilient in large dataset use cases
