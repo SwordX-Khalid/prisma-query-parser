@@ -1,7 +1,5 @@
 # Prisma Query Parser
 
----
-
 ## Prerequisites
 
 - Node.js LTS (20.18.0)
