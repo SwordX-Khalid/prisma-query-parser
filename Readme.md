@@ -47,6 +47,8 @@ You can also type `npm start load` to have a look over all of the supported opti
 ### What changes are needed to accommodate changes to support other data types, multiple filters, or ordering of results?
 
 - For multiple filters support, what I would do is update the interpreter query engine to split filter queries by "AND" and "OR" and also update the QueryResult interface to also support storing an array of filterConditions so the database engine can understand what fields it should filter by and at which order
+- The database is already built to support other data types! the CSV import function though, could be updated to support other data types by either specifying all of the header types in a certain config file which is then loaded by the database to understand which columns should be parsed into what type.
+- To add ordering support, the query parser will need to be updated to include another step for checking the order direction and field, handle and report syntax errors, update the tests also to handle cases for both happy and sad paths, and implement a utility that abstracts the way sorting occurs so it's efficient for all data types 
 
 ### What changes are needed to process extremely large datasets
 
